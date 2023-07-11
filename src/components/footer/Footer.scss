@@ -1,0 +1,22 @@
+.footer {
+	position: absolute;
+	bottom: 0;
+	padding-left: 64px;
+	height: 64px;
+	line-height: 64px;
+	width: 100%;
+	background: #001529;
+	color: aliceblue;
+	a {
+		color: #1677ff;
+		text-decoration: none;
+		background-color: transparent;
+		outline: none;
+		cursor: pointer;
+		transition: color 0.3s;
+
+		&:hover {
+			color: rgb(87, 196, 243);
+		}
+	}
+}
