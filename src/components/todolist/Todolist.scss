@@ -1,22 +1,26 @@
 .todolists {
 	overflow-y: auto;
 	padding-bottom: 64px;
+	font-size: clamp(0.625rem, calc(0.5179rem + 0.5357vw), 1rem);
+
 	&::-webkit-scrollbar {
 		width: 0;
 	}
 
 	.ant-card-body {
-		width: 40vw;
+		width: 80vw;
 		transition: all 0.2s;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		gap: 10px;
 		border-radius: 2px;
+	}
+}
 
-		.btn {
-			position: absolute;
-			right: 10px;
-		}
+@media only screen and (max-width: 600px) {
+	.ant-card .ant-card-body {
+		padding: 10px;
+		// font-size: 10px;
 	}
 }

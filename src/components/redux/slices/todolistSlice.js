@@ -27,11 +27,17 @@ const todolistSlice = createSlice({
 				todo.id === action.payload.id ? (todo.status = !todo.status) : todo
 			)
 		},
+		changeTitleTask(state, action) {
+			state.todolists.map(todo =>
+				todo.id === action.payload.id ? (todo.title = action.payload.title) : todo
+			)
+		},
 		filteredTasks(state, action) {
 			state.currentFilter = action.payload.filter
 		}
 	}
 })
 
-export const { addTask, removeTask, changeStatusTask, filteredTasks } = todolistSlice.actions
+export const { addTask, removeTask, changeStatusTask, filteredTasks, changeTitleTask } =
+	todolistSlice.actions
 export default todolistSlice.reducer

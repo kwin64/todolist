@@ -1,7 +1,7 @@
-import { PlusOutlined } from '@ant-design/icons'
-import { Button, Input } from 'antd'
+import { Input } from 'antd'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import Filter from '../filter/Filter'
 import { addTask } from '../redux/slices/todolistSlice'
 import './NewTodo.scss'
 
@@ -15,7 +15,7 @@ const NewTodo = () => {
 	}
 
 	const handleOnKeyPress = e => {
-		if (e.keyCode === 13 && valueInput) {
+		if (e.keyCode === 13 && e.currentTarget.value.length && e.currentTarget.value.trim().length) {
 			onClickHandler()
 		}
 	}
@@ -27,15 +27,15 @@ const NewTodo = () => {
 	return (
 		<div className='newTodo'>
 			<Input
+				autoFocus
 				placeholder='New task'
 				onKeyDown={handleOnKeyPress}
 				value={valueInput}
 				onChange={onChangeInput}
 			/>
-			<Button
-				icon={<PlusOutlined />}
-				onClick={onClickHandler}
-			/>
+			<div className='filter__desktop'>
+				<Filter />
+			</div>
 		</div>
 	)
 }

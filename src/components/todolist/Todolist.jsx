@@ -1,18 +1,21 @@
-import { DeleteOutlined } from '@ant-design/icons'
-import { Button, Card, Checkbox } from 'antd'
+import { Card, Checkbox } from 'antd'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeStatusTask, removeTask } from '../redux/slices/todolistSlice'
+import EditableTitle from '../common/editableTitle/EditableTitle'
+import { changeStatusTask, changeTitleTask, removeTask } from '../redux/slices/todolistSlice'
 import './Todolist.scss'
 
 const Todolist = () => {
 	let todolists = useSelector(state => state.todolist.todolists)
 	const currentFilter = useSelector(state => state.todolist.currentFilter)
-
 	const dispatch = useDispatch()
 
 	const changeStatus = id => {
 		dispatch(changeStatusTask({ id }))
+	}
+
+	const changeTitle = (id, title) => {
+		dispatch(changeTitleTask({ id, title }))
 	}
 
 	const revomeTask = id => {
@@ -27,22 +30,23 @@ const Todolist = () => {
 
 	return (
 		<div className='todolists'>
-			{todolists.map(({ id, title, status }) => (
-				<Card
-					key={id}
-					className='todolist'>
-					<Checkbox
-						className='todolist__status'
-						checked={status}
-						onChange={() => changeStatus(id)}></Checkbox>
-					<div className='todolist__title'>{title}</div>
-					<Button
-						className='btn'
-						icon={<DeleteOutlined />}
-						onClick={() => revomeTask(id)}
-					/>
-				</Card>
-			))}
+			{todolists.map(todo => {
+				return (
+					<Card
+						key={todo.id}
+						className='todolist'>
+						<Checkbox
+							className='todolist__status'
+							checked={todo.status}
+							onChange={() => changeStatus(todo.id)}></Checkbox>
+						<EditableTitle
+							todo={todo}
+							revomeTask={revomeTask}
+							changeTitle={changeTitle}
+						/>
+					</Card>
+				)
+			})}
 		</div>
 	)
 }

@@ -1,11 +1,26 @@
 .newTodo {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-	margin-top: 50px;
+	justify-content: space-between;
+	align-items: center;
 	gap: 10px;
+	width: 80vw;
 
 	input {
-		width: 37vw;
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.newTodo {
+		flex-direction: column;
+
+		input {
+			margin: 20px 0;
+		}
+
+		.filter__desktop {
+			display: none;
+		}
 	}
 }

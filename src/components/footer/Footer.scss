@@ -7,6 +7,7 @@
 	width: 100%;
 	background: #001529;
 	color: aliceblue;
+
 	a {
 		color: #1677ff;
 		text-decoration: none;
@@ -18,5 +19,15 @@
 		&:hover {
 			color: rgb(87, 196, 243);
 		}
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.footer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: clamp(0.5rem, calc(1.3571rem + -0.5357vw), 0.875rem);
+		padding-left: 10px;
 	}
 }

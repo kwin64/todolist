@@ -1,8 +1,8 @@
 .filter {
-	width: 40vw;
 	display: flex;
 	gap: 10px;
 	padding: 20px;
+	font-size: 16px;
 
 	.filter__item_all,
 	.filter__item_active,
@@ -38,5 +38,20 @@
 	}
 	.filter__item_complete:hover {
 		border: 1px solid green;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.filter {
+		font-size: 12px;
+
+		.filter__item_all,
+		.filter__item_active,
+		.filter__item_complete,
+		.filter__item_all_active,
+		.filter__item_active_active,
+		.filter__item_complete_active {
+			line-height: 100%;
+		}
 	}
 }
