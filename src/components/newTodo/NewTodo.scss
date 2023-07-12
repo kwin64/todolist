@@ -1,0 +1,11 @@
+.newTodo {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 50px;
+	gap: 10px;
+
+	input {
+		width: 37vw;
+	}
+}

@@ -1,0 +1,22 @@
+.todolists {
+	overflow-y: auto;
+	padding-bottom: 64px;
+	&::-webkit-scrollbar {
+		width: 0;
+	}
+
+	.ant-card-body {
+		width: 40vw;
+		transition: all 0.2s;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 10px;
+		border-radius: 2px;
+
+		.btn {
+			position: absolute;
+			right: 10px;
+		}
+	}
+}
