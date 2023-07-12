@@ -4,11 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 const todolistSlice = createSlice({
 	name: 'todolists',
 	initialState: {
-		todolists: [
-			{ id: uuidv4(), title: 'test', status: false },
-			{ id: uuidv4(), title: 'test2', status: false },
-			{ id: uuidv4(), title: 'test3', status: false }
-		],
+		todolists: [],
 		currentFilter: 'all'
 	},
 	reducers: {
