@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { FILTER_ITEMS } from '../../constants'
 import { filteredTasks } from '../redux/slices/todolistSlice'
 import './Filter.scss'
 
@@ -13,25 +14,16 @@ const Filter = () => {
 
 	return (
 		<div className='filter'>
-			<div
-				className={currentFilter === 'all' ? 'filter__item_all_active' : 'filter__item_all'}
-				onClick={() => filterHandler('all')}>
-				All
-			</div>
-			<div
-				className={
-					currentFilter === 'active' ? 'filter__item_active_active' : 'filter__item_active'
-				}
-				onClick={() => filterHandler('active')}>
-				Active
-			</div>
-			<div
-				className={
-					currentFilter === 'completed' ? 'filter__item_complete_active' : 'filter__item_complete'
-				}
-				onClick={() => filterHandler('completed')}>
-				Completed
-			</div>
+			{FILTER_ITEMS.map((item, index) => (
+				<div
+					key={index}
+					className={
+						currentFilter === item ? `filter__item_${item}_active` : `filter__item_${item}`
+					}
+					onClick={() => filterHandler(item)}>
+					{item[0].toUpperCase() + item.slice(1)}
+				</div>
+			))}
 		</div>
 	)
 }

@@ -1,5 +1,5 @@
 import { Card, Checkbox } from 'antd'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import EditableTitle from '../common/editableTitle/EditableTitle'
 import { changeStatusTask, changeTitleTask, removeTask } from '../redux/slices/todolistSlice'
@@ -10,17 +10,26 @@ const Todolist = () => {
 	const currentFilter = useSelector(state => state.todolist.currentFilter)
 	const dispatch = useDispatch()
 
-	const changeStatus = id => {
-		dispatch(changeStatusTask({ id }))
-	}
+	const changeStatus = useCallback(
+		id => {
+			dispatch(changeStatusTask({ id }))
+		},
+		[dispatch]
+	)
 
-	const changeTitle = (id, title) => {
-		dispatch(changeTitleTask({ id, title }))
-	}
+	const changeTitle = useCallback(
+		(id, title) => {
+			dispatch(changeTitleTask({ id, title }))
+		},
+		[dispatch]
+	)
 
-	const revomeTask = id => {
-		dispatch(removeTask({ id }))
-	}
+	const revomeTask = useCallback(
+		id => {
+			dispatch(removeTask({ id }))
+		},
+		[dispatch]
+	)
 
 	if (currentFilter === 'active') {
 		todolists = todolists.filter(task => task.status !== true)

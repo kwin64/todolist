@@ -68,4 +68,4 @@ export const EditableTitle = ({ todo, changeTitle, revomeTask }) => {
 		</div>
 	)
 }
-export default EditableTitle
+export default React.memo(EditableTitle)
